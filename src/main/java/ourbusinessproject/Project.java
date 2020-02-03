@@ -1,9 +1,18 @@
 package ourbusinessproject;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Entity
 public class Project {
+
+    private @Id
+    @GeneratedValue
+    Long id;
+    
     @NotNull
     @NotBlank
     private String title;
