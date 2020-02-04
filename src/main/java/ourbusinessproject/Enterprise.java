@@ -33,4 +33,6 @@ public class Enterprise {
         this.contactemail = contactemail;
     }
     public @NotEmpty String getContactEmail() { return this.contactemail; }
+
+    public Long getId() { return id; }
 }
