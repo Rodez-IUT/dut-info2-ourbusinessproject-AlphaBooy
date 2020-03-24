@@ -15,13 +15,14 @@ public class Project {
     @NotEmpty
     private String title;
     private String description;
-    @ManyToOne @NotNull
+    @ManyToOne(cascade=CascadeType.ALL)
     private Enterprise enterprise;
 
     public Project() {}
 
     public Project(Enterprise enterprise) {
         this.enterprise = enterprise;
+        this.enterprise.projects.add(this);
     }
 
     public String getTitle() {
@@ -46,5 +47,10 @@ public class Project {
 
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
+        this.enterprise.projects.add(this);
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
     }
 }

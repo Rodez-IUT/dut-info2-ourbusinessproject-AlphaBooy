@@ -1,10 +1,8 @@
 package ourbusinessproject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,8 +13,12 @@ public class Enterprise {
     private @NotEmpty @Size(min = 10) String description;
     private @NotEmpty String contactname;
     private @NotEmpty @Email String contactemail;
-    @OneToMany
-    private List<Project> projects;
+    @OneToMany(cascade= CascadeType.ALL)
+    public List<Project> projects;
+
+    public Enterprise(){
+        this.projects = new ArrayList<>();
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -42,5 +44,9 @@ public class Enterprise {
 
     public List<Project> getProjects() {
         return projects;
+    }
+
+    public void addProject(Project projectaadd){
+        this.projects.add(projectaadd);
     }
 }
