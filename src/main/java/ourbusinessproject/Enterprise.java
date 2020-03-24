@@ -13,7 +13,7 @@ public class Enterprise {
     private @NotEmpty @Size(min = 10) String description;
     private @NotEmpty String contactname;
     private @NotEmpty @Email String contactemail;
-    @OneToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL) @NotNull
     public List<Project> projects;
 
     public Enterprise(){
@@ -43,7 +43,7 @@ public class Enterprise {
     public Long getId() { return id; }
 
     public List<Project> getProjects() {
-        return projects;
+        return projects.isEmpty() ? null : projects;
     }
 
     public void addProject(Project projectaadd){
