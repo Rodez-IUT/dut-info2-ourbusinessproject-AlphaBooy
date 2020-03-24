@@ -3,7 +3,9 @@ package ourbusinessproject;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 public class Enterprise {
@@ -13,6 +15,8 @@ public class Enterprise {
     private @NotEmpty @Size(min = 10) String description;
     private @NotEmpty String contactname;
     private @NotEmpty @Email String contactemail;
+    @OneToMany
+    private List<Project> projects;
 
     public void setName(String name) {
         this.name = name;
@@ -35,4 +39,8 @@ public class Enterprise {
     public @NotEmpty String getContactEmail() { return this.contactemail; }
 
     public Long getId() { return id; }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
 }
