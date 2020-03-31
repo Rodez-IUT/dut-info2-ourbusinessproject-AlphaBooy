@@ -15,7 +15,7 @@ public class Project {
     @NotEmpty
     private String title;
     private String description;
-    @ManyToOne(cascade=CascadeType.ALL) @NotNull
+    @ManyToOne @NotNull
     private Enterprise enterprise;
 
     public Project() {}
@@ -27,7 +27,7 @@ public class Project {
         }
     }
 
-    public Project(String title, String description, Enterprise enterprise) {
+    public Project(@NotEmpty String title, String description, @NotNull Enterprise enterprise) {
         this.title = title;
         this.description = description;
         this.enterprise = enterprise;
