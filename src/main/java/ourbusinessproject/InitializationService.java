@@ -22,6 +22,13 @@ public class InitializationService {
     @Transactional
     public void initProjects() {
 
+        /*
+         * Le principe d'un rollback étant de préserver l'intégrité des données entre un point A et B,
+         * si une erreur parvient entre les deux points, l'intégralité des traitements réalisés depuis A
+         * seront annulés (rollback). Cependant, si les traitements sont tous correctements réalisés, un commit
+         * sera déclanché sauvegardant ainsi les données en base.
+         */
+
         enterprise1 = new Enterprise();
         enterprise1.setName("Enterprise 1");
         enterprise1.setDescription("Enterprise 1 description");
